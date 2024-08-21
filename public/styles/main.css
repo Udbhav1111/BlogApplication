@@ -1,0 +1,39 @@
+
+.static-padding{
+    padding-right: 5rem;
+}
+
+.custom-img-shadow {
+box-shadow: 1px 0px 11px 9px rgb(0 0 0 / 10%);
+}
+
+.custom-width {
+    width: 90vw;
+    margin-left: -25vw;
+}
+
+.hide-btn{
+    margin-right: 0.4rem;
+}
+
+.items-button{
+    display: flex;
+    justify-content: space-between;
+    padding: 0%;
+    margin: 0%;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .custom-width{
+        width: auto;
+        margin: 0%;
+    }
+    .responsive {
+        /* justify-content: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}

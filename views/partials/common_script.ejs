@@ -1,0 +1,20 @@
+
+
+//For Common Scripts
+// On form submit, set the hidden input's value to the editor's content
+$('#myForm').submit( function(event) {
+// Get the HTML content from the editor
+// var editorContent = quill.root.innerHTML;
+var quillEditor = $(".ql-editor").html();
+
+// Set the content of the hidden input field
+$('#content').attr("value",quillEditor);
+
+// Optionally: console log the content for debugging
+
+// By returning true, the form will be submitted as normal
+return true;
+});
+
+
+

@@ -1,0 +1,61 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+<div class="col-md-8">
+    <div class="position-sticky" style="top: 2rem;">
+
+      <div>
+        <h4 class="fst-italic">Recent posts</h4>
+        <ul class="list-unstyled">
+          <% if(locals.blogs){ %>
+            <% Object.keys(blogs).forEach(function(key) { %>
+
+              <li>
+                <div class="col-md-5 py-2 blog-div">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static ">
+                      <input type="hidden" id="unique_id" name="unique_id" value="<%= blogs[key].objValue %>">
+                      <h3 class="mb-0 title"><%= blogs[key].title %></h3>
+                      <br>
+                      <div class="content"> 
+                        <%- blogs[key].content %>
+                      </div>
+                      <a href="/view-blog?id=<%= blogs[key].objValue %>" id="blog-link " class="blog-link icon-link gap-1 icon-link-hover stretched-link ">
+                        Continue reading
+                      
+                      </a>
+                      <br>
+                      <% if(blogs[key].update){ %>
+                        <p class="link-secondary">Updated!!</p>
+                      <% } %>
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+              </li>
+
+            <% }) %>
+          <% }%>
+          <h2 class="fst-italic py-3">No Blogs Found!!</h4>
+
+          
+          
+        </ul>
+      </div>
+
+      
+    </div>
+  </div>
+  
+</div>
+<script>
+  window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get('status');
+
+      if (status === 'deleted') {
+          alert('Blog deleted successfully!');
+      }
+  };
+</script>
+<%- include("partials/footer.ejs") %>

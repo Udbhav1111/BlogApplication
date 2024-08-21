@@ -1,0 +1,92 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        From the Firehose
+      </h3>
+      
+      <article class="blog-post">
+        <% if(locals.title) { %>
+          <h2 class="display-5 link-body-emphasis mb-1"> <%- title %></h2>
+        <% }else{ %>
+          <h2 class="display-5 link-body-emphasis mb-1">TITLE OF THE BLOG <%= id %></h2>
+
+        <% } %>
+
+        <% if(locals.content ){ %>
+          <p id="content_text" class="pb-4 mb-4 fst-italic border-bottom py-3">
+            <div id="content-show">
+            <%- content %>
+          </div>
+          </p>
+          
+        <% }else{ %>
+          <h3 class="pb-4 mb-4 fst-italic border-bottom py-5">
+            Content Goes Here!
+          </h3>
+        <% } %>
+      </article>
+
+      
+
+      
+
+      <nav class="blog-pagination" aria-label="Pagination">
+        
+        <a class="btn btn-outline-primary rounded-pill"  id="updation-post" href="#">Update</a>
+        <a class="btn btn-outline-secondary rounded-pill " href="/delete-blog/?id=<%= id %>"  aria-disabled="true">Delete</a>
+      </nav>
+
+    </div>
+</div>
+
+
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+  
+  $('#updation-post').on('click', function() {
+        // Check if the "Editor div" already exists
+        var editor = $("#editor");
+        var form_exsits = $("#myForm");
+        if (editor.length > 0) {
+            // If it exists, remove it
+          
+            content = $('<div id="content-show"> <%- content %> </div>')
+            form_exsits.before(content);
+            form_exsits.remove();
+            editor.remove();
+            $(".ql-snow").remove();
+            $(this).text("Update");
+            $(".hide").remove();
+            
+        } else {
+            // If it doesn't exist, create and insert it
+            postButton = $('<a class="btn btn-outline-primary rounded-pill hide-btn" id="btn-update-post" href="#">Post</a>');
+            editor = $(`<%- include("partials/create_blog.ejs" ,{method:"post"}) %>`);
+            //adding editor after that remove previous div content
+            $(".hide").remove();
+            $("#content-show").after(editor);
+            $(".hide-2").remove();
+            $("#content-show").remove();
+
+            //Refernce Id to Create_blog -> for Updation of a particular post!
+            $("#blog_id").attr("value","<%= id %>");
+
+            //applying quill
+            const quill = new Quill('#editor', {
+              theme: 'snow'
+            });
+
+            //Inheriting another script file..!
+            <%- include("partials/common_script.ejs") %>
+
+            // $(this).before(postButton);
+            $(this).text("Cancel");
+            
+        }
+    });
+</script>
+

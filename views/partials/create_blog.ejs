@@ -1,0 +1,30 @@
+<!-- Create the editor container -->
+<% if(locals.method){ %>
+    <form id="myForm" method="<%= method %>" action="/update-blog">
+<% }else{ %>
+    <form id="myForm" method="post" action="/create-blog">
+<% } %>
+
+    <!-- Quill Editor Container -->
+    <p class="lead mb-4 hide hide-2" >SELECT TITLE IMAGE</p>
+    <input type="text" class="form-control mb-3 hide hide-2" placeholder="Enter Your Title " name="title" aria-label="Enter Your title: " aria-describedby="basic-addon2">
+    
+    <div id="editor">
+        <% if(locals.content){ %>
+            <%- content %>
+        <% }else{ %>
+
+            <p>Hello World!</p>
+            <p>Some initial <strong>bold</strong> text</p>
+            <p><br /></p>
+        <% } %> 
+    </div>
+    
+    <!-- Hidden Input Field to Store Editor Content -->
+    <input type="hidden" name="content" id="content"  value="">
+    <input type="hidden" name="blog_id" id="blog_id" value="">  
+    
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary my-3 hide">Post</button>
+  </form>
+  

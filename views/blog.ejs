@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Unleash Your Voice: Why Blogging in the Health Sector Matters</h1>
+        <p class="lead text-body-secondary">Are you passionate about health, wellness, and medicine? Do you have knowledge that could change lives or insights that could inspire others? If so, it's time to unleash your voice and start blogging!</p>
+        <p>
+            <!-- Collapse Menu for Blog!! -->
+            <div class="container-lg">
+                <p class="d-inline-flex gap-1">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      Create Blog
+                    </a>
+                </p>
+                <div class="collapse custom-width" id="collapseExample">
+                    
+                        <%- include("partials/create_blog.ejs") %>
+                        
+                    
+                </div>
+            </div>
+          
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+<%- include("partials/footer.ejs") %>
