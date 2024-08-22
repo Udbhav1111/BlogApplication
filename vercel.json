@@ -14,5 +14,8 @@
         "src": "/(.*)",
         "dest": "/index.js"
       }
+    ],
+    "ignore": [
+        "node_modules/**"
     ]
   }
