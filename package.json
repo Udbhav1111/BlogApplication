@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A Blog Application! ",
   "main": "index.js",
+  "engines": {
+    "node":"20.x"
+  },
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
